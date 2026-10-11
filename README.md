@@ -38,3 +38,16 @@ Michael/
   month = { apr },
   note = { visited on 2026-10-11 }
 }
+
+@misc{ fire-no-fire-classification_dataset,
+  title = { fire no fire classification Dataset },
+  type = { Open Source Dataset },
+  author = { National University of Sciences  Technology },
+  howpublished = { \url{ https://universe.roboflow.com/national-university-of-sciences-technology/fire-no-fire-classification } },
+  url = { https://universe.roboflow.com/national-university-of-sciences-technology/fire-no-fire-classification },
+  journal = { Roboflow Universe },
+  publisher = { Roboflow },
+  year = { 2025 },
+  month = { mar },
+  note = { visited on 2026-10-11 },
+}
