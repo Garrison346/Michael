@@ -1,5 +1,7 @@
+
 # Python Virtual Environments
 venv/
+.venv/
 *.venv/
 __pycache__/
 *.py[cod]
@@ -9,5 +11,24 @@ __pycache__/
 *.onnx
 runs/
 
-# Keep .gitkeep or data.yaml
-!dataset/data.yaml
+# Classification Dataset
+/dataset/classification/train/
+/dataset/classification/val/
+/dataset/classification/valid/
+/dataset/classification/test/
+
+# Detection Dataset Images & Labels
+/dataset/detection/train/images/*
+/dataset/detection/train/labels/*
+/dataset/detection/val/images/*
+/dataset/detection/val/labels/*
+/dataset/detection/valid/images/*
+/dataset/detection/valid/labels/*
+/dataset/detection/test/images/*
+/dataset/detection/test/labels/*
+
+# Keep .gitkeep directory placeholders
+!/dataset/detection/**/.gitkeep
+
+# Keep dataset configuration
+!/dataset/detection/data.yaml
