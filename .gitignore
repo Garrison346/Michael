@@ -1,0 +1,19 @@
+# Python Virtual Environments
+venv/
+*.venv/
+__pycache__/
+*.py[cod]
+
+# Model Weights & Output Directories
+*.pt
+*.onnx
+runs/
+
+# Large Dataset Files (Ignore actual images/labels, keep folder structure)
+dataset/train/images/*
+dataset/train/labels/*
+dataset/val/images/*
+dataset/val/labels/*
+
+# Keep .gitkeep or data.yaml
+!dataset/data.yaml
