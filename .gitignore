@@ -18,14 +18,10 @@ runs/
 /dataset/classification/test/
 
 # Detection Dataset Images & Labels
-/dataset/detection/train/images/*
-/dataset/detection/train/labels/*
-/dataset/detection/val/images/*
-/dataset/detection/val/labels/*
-/dataset/detection/valid/images/*
-/dataset/detection/valid/labels/*
-/dataset/detection/test/images/*
-/dataset/detection/test/labels/*
+/dataset/detection/train/
+/dataset/detection/val/
+/dataset/detection/valid/
+/dataset/detection/test/
 
 # Keep .gitkeep directory placeholders
 !/dataset/detection/**/.gitkeep
