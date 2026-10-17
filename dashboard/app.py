@@ -1,10 +1,10 @@
 
+import sys
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 from PIL import Image
-from ultralytics import YOLO
 
 
 # Project directories
@@ -13,11 +13,15 @@ RUN_DIR = ROOT / "runs" / "classify" / "fire_gpu_test"
 MODEL_PATH = RUN_DIR / "weights" / "best.pt"
 RESULTS_PATH = RUN_DIR / "results.csv"
 
+# Make src/ importable when run via `streamlit run dashboard/app.py`
+sys.path.insert(0, str(ROOT))
+from src.perception.classifier import FireClassifier
+
 
 # Load model once and reuse it across interactions
 @st.cache_resource
-def load_model(model_path: str):
-    return YOLO(model_path)
+def load_classifier(model_path: str):
+    return FireClassifier(model_path, device="cpu")
 
 
 # Configure dashboard
@@ -57,25 +61,15 @@ with prediction_tab:
             st.image(image, caption="Uploaded image", width="stretch")
 
         with right:
-            model = load_model(str(MODEL_PATH))
-
             # Run image classification
-            result = model.predict(
-                source=image,
-                device="cpu",
-                verbose=False,
-            )[0]
-
-            # Read predicted class probabilities
-            probabilities = result.probs.data.cpu().numpy()
-            class_names = result.names
+            prediction = load_classifier(str(MODEL_PATH)).predict(image)
 
             scores = {
-                class_names[i]: float(probabilities[i])
-                for i in range(len(probabilities))
+                "fire": prediction["fire_probability"],
+                "nofire": prediction["nofire_probability"],
             }
 
-            predicted_label = max(scores, key=scores.get)
+            predicted_label = prediction["label"]
 
             st.subheader("Prediction")
             st.metric(
